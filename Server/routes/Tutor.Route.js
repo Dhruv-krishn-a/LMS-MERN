@@ -8,7 +8,7 @@ const nodemailer = require("nodemailer");
 const { TutorModel } = require("../models/tutor.model");
 
 //middleware import
-const { isAdminAuthenticated } = require("../middlewares/authenticate");
+const { isTutorAuthenticated } = require("../middlewares/authenticate");
 
 //get all tutor data
 router.get("/all", async (req, res) => {
@@ -21,7 +21,7 @@ router.get("/all", async (req, res) => {
 });
 
 //register new tutor
-router.post("/register", isAdminAuthenticated, async (req, res) => {
+router.post("/register", isTutorAuthenticated, async (req, res) => {
     const { name, email, password, subject } = req.body.data;
     try {
         let user = await TutorModel.find({ email });
@@ -54,6 +54,8 @@ router.post("/register", isAdminAuthenticated, async (req, res) => {
                             pass: process.env.ADMIN_PASSWORD, // generated ethereal password
                         },
                     });
+
+                    console.log(transporter);
 
                     const mailOptions = {
                         from: `👻 ${process.env.ADMIN_GMAIL}`, // sender address
@@ -116,7 +118,7 @@ router.post("/login", async (req, res) => {
 });
 
 //edit tutor
-router.patch("/:tutorId", isAdminAuthenticated, async (req, res) => {
+router.patch("/:tutorId", isTutorAuthenticated, async (req, res) => {
     const { tutorId } = req.params;
     const payload = req.body.data;
     try {

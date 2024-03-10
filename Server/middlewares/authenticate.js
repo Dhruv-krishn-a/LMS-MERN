@@ -8,9 +8,9 @@ const isAdminAuthenticated = async (req, res, next) => {
     return res.status(401).send({ message: "Missing Token. Access Denied" });
   }
   try {
-    const decodedData = jwt.verify(token, process.env.secret_key);
-    let user = await AdminModel.findOne({ email: decodedData.email });
-    if (user) {
+    const decodedData = jwt.decode(token, process.env.secret_key);
+    let admin = await AdminModel.findOne({ email: decodedData.email });
+    if (admin) {
       next();
     } else {
       return res.status(401).send({ message: "Invalid Token. Access Denied" });
@@ -26,7 +26,7 @@ const isTutorAuthenticated = async (req, res, next) => {
     return res.status(401).send({ message: "Missing Token. Access Denied" });
   }
   try {
-    const decodedData = jwt.verify(token, process.env.secret_key);
+    const decodedData = jwt.decode(token, process.env.secret_key);
     let tutor = await TutorModel.findOne({ email: decodedData.email });
     if (tutor) {
       next();
@@ -44,7 +44,7 @@ const isAuthenticated = async (req, res, next) => {
     return res.status(401).send({ message: "Missing Token. Access Denied" });
   }
   try {
-    const decodedData = jwt.verify(token, process.env.secret_key);
+    const decodedData = jwt.decode(token, process.env.secret_key);
     let admin = await AdminModel.findOne({ email: decodedData.email });
     let tutor = await TutorModel.findOne({ email: decodedData.email });
     if (admin || tutor) {

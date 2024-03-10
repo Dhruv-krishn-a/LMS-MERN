@@ -66,6 +66,7 @@ ADMIN_PASSWORD = your password
 
 - Email - test@gmail.com
 - Password - test
+- Type - Tutor
 
 
 ## Features Completed
