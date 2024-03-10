@@ -1,6 +1,6 @@
 # Learning Management system
 
-LMS is a full-featured, multipurpose, premium Learning Management System built with react js, HTML5, and CSS. It has a huge collection of reusable UI components and is integrated with the latest CSS libraries. It can be used for all types of Web applications like custom admin panel, app backend, CMS or CRM.
+LMS is a full-featured, multipurpose, premium Learning Management System built with React JS, HTML5, and CSS. It has a huge collection of reusable UI components and is integrated with the latest CSS libraries. It can be used for all types of Web applications like custom admin panel, app backend, CMS, or CRM.
 
 # Installation
 
@@ -37,7 +37,7 @@ npm run server
 - Add .env file in the Server directory
 - File should contain
 ```bash
-dbURL = your mongoDB url
+dbURL = your mongoDB URL
 port = 8000
 secret_key = your secret key
 Salt_rounds = 5
@@ -63,7 +63,7 @@ ADMIN_PASSWORD = your password
 
 ## 🔗 Links
 
-- Live - https://lms-dir.vercel.app
+- Live - https://lms-dir.vercel.app/
 - Server - https://lms-server-xzsw.onrender.com
 
 ## 🔗 Credentials
@@ -75,7 +75,7 @@ ADMIN_PASSWORD = your password
 
 - Admin can regulate user access to particular data
 - Account credentials are sent over mail once the user account is created
-- Tutors can provide homework, assignment and quizzes to students
+- Tutors can provide homework, assignments, and quizzes to students
 - Students can monitor their performance and assess their progress using an LMS.
 - Students can raise doubts
 - Tutors can add responses to doubts
@@ -89,7 +89,7 @@ ADMIN_PASSWORD = your password
 - Private chats between tutors and students
 - Setting reminders and notifications
 - Payment systems
-- Real time quiz system
+- Real-time quiz system
 
 ## Screenshots
 1. Login
