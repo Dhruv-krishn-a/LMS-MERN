@@ -69,9 +69,6 @@ const Content = () => {
         return alert("please fill all the details");
       }
     }
-    if (size == "" || fileType == "" || fileUrl == "" || thumbnailUrl == "") {
-      return alert("Please choose a correct file type");
-    }
     let obj = { ...formData, size, fileType, thumbnailUrl, fileUrl };
     setLoading(true);
     dispatch(createContent(obj)).then((res) => {
@@ -87,7 +84,7 @@ const Content = () => {
         onClose();
         return messageApi.open({
           type: "info",
-          content: "Quiz Created",
+          content: "Content Created",
           duration: 3,
         });
       }
@@ -96,31 +93,39 @@ const Content = () => {
 
   // cloudinary upload settings
   useEffect(() => {
-    UploadRef.current = window.cloudinary;
-    WidgetRef.current = UploadRef.current.createUploadWidget(
-      {
-        cloudName: "diverse",
-        uploadPreset: "diverse",
-        maxFiles: 1,
-        clientAllowedFormats: ["jpg", "jpeg", "mp4"],
-        maxFileSize: 52445000,
-        thumbnailTransformation: [{ width: 240, height: 135, crop: "fill" }],
-      },
-      function (err, result) {
-        if (result.info.secure_url) {
-          setFileUrl(result.info.secure_url);
-        }
-        if (result.info.bytes) {
-          setSize((result.info.bytes / 1000000).toFixed(3));
-        }
-        if (result.info.thumbnail_url) {
-          setThumbnailUrl(result.info.thumbnail_url);
-        }
-        if (result.info.format) {
-          setFileType(result.info.format);
-        }
+    const initializeUploadWidget = () => {
+      if (window.cloudinary) {
+        UploadRef.current = window.cloudinary;
+        WidgetRef.current = UploadRef.current.createUploadWidget(
+          {
+            cloudName: "djib5oxng",
+            uploadPreset: "djib5oxng",
+            maxFiles: 1,
+            clientAllowedFormats: ["jpg", "jpeg", "mp4"],
+            maxFileSize: 52445000,
+            thumbnailTransformation: [{ width: 240, height: 135, crop: "fill" }],
+          },
+          function (err, result) {
+            if (result.info.secure_url) {
+              setFileUrl(result.info.secure_url);
+            }
+            if (result.info.bytes) {
+              setSize((result.info.bytes / 1000000).toFixed(3));
+            }
+            if (result.info.thumbnail_url) {
+              setThumbnailUrl(result.info.thumbnail_url);
+            }
+            if (result.info.format) {
+              setFileType(result.info.format);
+            }
+          }
+        );
+      } else {
+        setTimeout(initializeUploadWidget, 100); // Retry after 100 milliseconds
       }
-    );
+    };
+
+    initializeUploadWidget();
   }, []);
 
   useEffect(() => {
@@ -155,7 +160,7 @@ const Content = () => {
 
         {/* create content drawer */}
         <Drawer
-          title="Create a new account"
+          title="Create a Content"
           width={720}
           onClose={onClose}
           open={open}
@@ -209,12 +214,6 @@ const Content = () => {
           ) : (
             ""
           )}
-          <button
-            className="uploadBtn"
-            onClick={() => WidgetRef.current.open()}
-          >
-            Upload File
-          </button>
           <button className="submitBtn" onClick={handleSubmit}>
             Add Content
           </button>

@@ -39,7 +39,7 @@ npm run server
 ```bash
 dbURL = your mongoDB url
 port = 8000
-secret_key = "secret key"
+secret_key = your secret key
 Salt_rounds = 5
 ADMIN_GMAIL = your email
 ADMIN_PASSWORD = your password
@@ -47,11 +47,15 @@ ADMIN_PASSWORD = your password
 
 ## Tech Stack / Libraries
 - **React**
+- **Redux**
 - **Ant Designs**
 - **Recharts**
 - **NodeJs**
 - **ExpressJs**
 - **MongoDB**
+- **Mongoose**
+- **Nodemailer**
+- **bcrypt**
 
 ## Deployment
 - **Client**  - Vercel
@@ -66,8 +70,6 @@ ADMIN_PASSWORD = your password
 
 - Email - test@gmail.com
 - Password - test
-- Type - Tutor
-
 
 ## Features Completed
 
@@ -87,18 +89,28 @@ ADMIN_PASSWORD = your password
 - Private chats between tutors and students
 - Setting reminders and notifications
 - Payment systems
+- Real time quiz system
 
 ## Screenshots
 1. Login
 
 
-2. Dashboard
+2. Register page
 
 
-3. Quiz page
+3. Dashboard
 
 
-4. Leaderboard
+4. Quiz page
+
+
+5. Leaderboard
+
+
+6. Doubt page
+
+
+### NOTE: All Blogs are fully responsive for all beakpoints
 
 
 ##  Contributor

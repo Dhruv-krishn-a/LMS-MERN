@@ -30,7 +30,7 @@ const LeaderBoard = () => {
       return navigate("/");
     }
   }, []);
-
+ 
   return (
     <Navbar>
       {/* header  */}
@@ -53,7 +53,7 @@ const LeaderBoard = () => {
             </thead>
             <tbody>
               {students
-                .sort((a, b) => (a.totalPoints > b.totalPoints ? -1 : 1))
+                .sort((a, b) => (b.totalPoints - a.totalPoints))
                 .map((data, i) => (
                   <LeaderboardRow key={i} data={data} />
                 ))}

@@ -134,7 +134,6 @@ const Quizzes = () => {
       creator: user.name,
     };
 
-    console.log(obj);
     setLoading(true);
     dispatch(createQuiz(obj)).then((res) => {
       if (res.msg == "Error") {
@@ -247,9 +246,8 @@ const Quizzes = () => {
             />
             <input
               placeholder="Total points"
-              value={`Total Points : ${
-                formData.noOfQuestions * formData.pointPerQuestion
-              }`}
+              value={`Total Points : ${formData.noOfQuestions * formData.pointPerQuestion
+                }`}
               name="totalPoints"
               onChange={(e) => handleFormChange(e)}
             />

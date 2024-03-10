@@ -62,7 +62,6 @@ const Admin = () => {
     setLoading(true);
     dispatch(adminRegister(FormData))
       .then((res) => {
-        console.log(res);
         if (res.msg === "User already registered") {
           setLoading(false);
           messageApi.open({

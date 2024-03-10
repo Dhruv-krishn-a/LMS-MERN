@@ -69,11 +69,7 @@ const Doubts = () => {
         return alert("please fill all the details");
       }
     }
-    if (size == "" || fileType == "" || fileUrl == "" || thumbnailUrl == "") {
-      return alert("Please pls upload a file explaining your doubt");
-    }
     let obj = { ...formData, size, fileType, thumbnailUrl, fileUrl };
-    console.log(obj);
     setLoading(true);
     dispatch(createDoubt(obj)).then((res) => {
       if (res.msg == "Error") {
@@ -97,31 +93,39 @@ const Doubts = () => {
 
   //cloudinary upload settings
   useEffect(() => {
-    UploadRef.current = window.cloudinary;
-    WidgetRef.current = UploadRef.current.createUploadWidget(
-      {
-        cloudName: "diverse",
-        uploadPreset: "diverse",
-        maxFiles: 1,
-        clientAllowedFormats: ["jpg", "jpeg", "mp4"],
-        maxFileSize: 52445000,
-        thumbnailTransformation: [{ width: 240, height: 135, crop: "fill" }],
-      },
-      function (err, result) {
-        if (result.info.secure_url) {
-          setFileUrl(result.info.secure_url);
-        }
-        if (result.info.bytes) {
-          setSize((result.info.bytes / 1000000).toFixed(3));
-        }
-        if (result.info.thumbnail_url) {
-          setThumbnailUrl(result.info.thumbnail_url);
-        }
-        if (result.info.format) {
-          setFileType(result.info.format);
-        }
+    const initializeUploadWidget = () => {
+      if (window.cloudinary) {
+        UploadRef.current = window.cloudinary;
+        WidgetRef.current = UploadRef.current.createUploadWidget(
+          {
+            cloudName: "djib5oxng",
+            uploadPreset: "djib5oxng",
+            maxFiles: 1,
+            clientAllowedFormats: ["jpg", "jpeg", "mp4"],
+            maxFileSize: 52445000,
+            thumbnailTransformation: [{ width: 240, height: 135, crop: "fill" }],
+          },
+          function (err, result) {
+            if (result.info.secure_url) {
+              setFileUrl(result.info.secure_url);
+            }
+            if (result.info.bytes) {
+              setSize((result.info.bytes / 1000000).toFixed(3));
+            }
+            if (result.info.thumbnail_url) {
+              setThumbnailUrl(result.info.thumbnail_url);
+            }
+            if (result.info.format) {
+              setFileType(result.info.format);
+            }
+          }
+        );
+      } else {
+        setTimeout(initializeUploadWidget, 100); // Retry after 100 milliseconds
       }
-    );
+    };
+
+    initializeUploadWidget();
   }, []);
 
   useEffect(() => {
@@ -163,11 +167,11 @@ const Doubts = () => {
 
         {/* drawer  */}
         <Drawer
-          title="Create a new account"
+          title="Create a new doubt"
           width={720}
           onClose={onClose}
           open={open}
-          bodyStyle={{ paddingBottom: 80 }}
+          style={{ paddingBottom: 80 }}
           extra={
             <Space>
               <Button onClick={onClose}>Cancel</Button>
@@ -218,14 +222,8 @@ const Doubts = () => {
           ) : (
             ""
           )}
-          <button
-            className="uploadBtn"
-            onClick={() => WidgetRef.current.open()}
-          >
-            Upload File
-          </button>
           <button className="submitBtn" onClick={handleSubmit}>
-            Add Content
+            Add Doubt
           </button>
 
           {/* drawer loading indicator */}

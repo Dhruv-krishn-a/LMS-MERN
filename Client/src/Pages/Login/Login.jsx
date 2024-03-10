@@ -100,11 +100,18 @@ const Login = () => {
     }
     if (formData.type === "student") {
       dispatch(studentLogin(formData)).then((res) => {
-        if (res.message === "Wrong credentials") {
+        if (res.message === "Wrong EmailID") {
           setLoading(false);
           messageApi.open({
             type: "info",
-            content: "Wrong credentials !",
+            content: "Wrong EmailID !",
+            duration: 3,
+          });
+        } else if (res.message === "Wrong Password") {
+          setLoading(false);
+          messageApi.open({
+            type: "info",
+            content: "Wrong Password !",
             duration: 3,
           });
         } else if (res.message === "Access Denied") {

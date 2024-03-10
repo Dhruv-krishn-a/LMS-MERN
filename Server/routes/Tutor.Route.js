@@ -55,8 +55,6 @@ router.post("/register", isTutorAuthenticated, async (req, res) => {
                         },
                     });
 
-                    console.log(transporter);
-
                     const mailOptions = {
                         from: `👻 ${process.env.ADMIN_GMAIL}`, // sender address
                         to: email, // list of receivers

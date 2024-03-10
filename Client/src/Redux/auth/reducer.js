@@ -26,6 +26,7 @@ export default function authReducer(state = initialState, { type, payload }) {
         userLogin: { loading: true, error: false },
       };
     case types.LOGIN_STUDENT_SUCCESS:
+      localStorage.setItem('token', payload.token);
       return {
         ...state,
         userLogin: { loading: false, error: false, message: payload.message },
@@ -36,6 +37,7 @@ export default function authReducer(state = initialState, { type, payload }) {
         },
       };
     case types.LOGIN_ADMIN_SUCCESS:
+      localStorage.setItem('token', payload.token);
       return {
         ...state,
         userLogin: { loading: false, error: false, message: payload.message },
@@ -46,6 +48,7 @@ export default function authReducer(state = initialState, { type, payload }) {
         },
       };
     case types.LOGIN_TUTOR_SUCCESS:
+      localStorage.setItem('token', payload.token);
       return {
         ...state,
         userLogin: { loading: false, error: false, message: payload.message },
@@ -72,6 +75,7 @@ export default function authReducer(state = initialState, { type, payload }) {
       };
 
     case types.AUTH_LOGOUT:
+      localStorage.clear();
       return {
         ...state,
         userLogin: { loading: false, error: false, message: "" },

@@ -62,7 +62,6 @@ const Tutor = () => {
     setLoading(true);
     dispatch(tutorRegister(FormData))
       .then((res) => {
-        console.log(res);
         if (res.msg === "User already registered") {
           setLoading(false);
           messageApi.open({

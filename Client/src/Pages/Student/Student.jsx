@@ -63,7 +63,6 @@ const Student = () => {
     setLoading(true);
     dispatch(studentRegister(FormData))
       .then((res) => {
-        console.log(res);
         if (res.msg === "User already registered") {
           setLoading(false);
           messageApi.open({

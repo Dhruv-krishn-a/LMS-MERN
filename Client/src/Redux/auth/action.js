@@ -15,7 +15,6 @@ export const adminLogin = (data) => async (dispatch) => {
         token: res.data.token,
       },
     });
-    localStorage.setItem("token", res.data.token);
     return res.data;
   } catch (error) {
     dispatch({
