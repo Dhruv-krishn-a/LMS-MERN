@@ -156,7 +156,7 @@ const Login = () => {
           <div>
             {/* login form  */}
             <form onSubmit={handleFormSubmit}>
-              <select name="type" onChange={handleFormChange}>
+              <select value={formData.type} name="type" onChange={handleFormChange}>
                 <option value="">Select user type</option>
                 <option value="admin">Admin</option>
                 <option value="tutor">Tutor</option>
@@ -165,7 +165,7 @@ const Login = () => {
               <input
                 required
                 name="email"
-                value={formData.id}
+                value={formData.email}
                 onChange={handleFormChange}
                 type="email"
                 placeholder="Enter email"

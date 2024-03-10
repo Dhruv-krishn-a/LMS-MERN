@@ -184,7 +184,7 @@ const Student = () => {
               <option value={9}>9</option>
               <option value={10}>10</option>
             </select>
-            <input type="submit" value="Add Tutor" />
+            <input type="submit" value="Add Student" />
           </form>
           {loading ? (
             <Space

@@ -141,7 +141,7 @@ const Tutor = () => {
           width={720}
           onClose={onClose}
           open={open}
-          bodyStyle={{ paddingBottom: 80 }}
+          style={{ paddingBottom: 80 }}
           extra={
             <Space>
               <Button onClick={onClose}>Cancel</Button>
