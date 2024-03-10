@@ -113,6 +113,7 @@ ADMIN_PASSWORD = your password
 ![Screenshot (549)](https://github.com/Pushpendra-1697/Learning-Directory/assets/104748364/c531ab28-0298-4680-94c1-588a633f5d21)
 
 6. Doubt page
+
 ![Screenshot (550)](https://github.com/Pushpendra-1697/Learning-Directory/assets/104748364/fe8473f0-18d5-42d9-a873-98cd6849ce9c)
 
 
