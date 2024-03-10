@@ -4,13 +4,13 @@ const bcrypt = require("bcrypt");
 const router = express.Router();
 const nodemailer = require("nodemailer");
 
-//model import
+// model import
 const { StudentModel } = require("../models/student.model");
 
-//middleware import
+// middleware import
 const { isAuthenticated } = require("../middlewares/authenticate");
 
-//gel all students data
+// gel all students data
 router.get("/all", async (req, res) => {
     try {
         const students = await StudentModel.find();
@@ -20,8 +20,8 @@ router.get("/all", async (req, res) => {
     }
 });
 
-// register new students
-router.post("/register", async (req, res) => {
+// register new student
+router.post("/register", isAuthenticated, async (req, res) => {
     const { name, email, password } = req.body.data;
     try {
         let user = await StudentModel.find({ email });
@@ -56,7 +56,7 @@ router.post("/register", async (req, res) => {
                     });
 
                     const mailOptions = {
-                        from: `${process.env.ADMIN_GMAIL}"👻"`, // sender address
+                        from: `👻 ${process.env.ADMIN_GMAIL}`, // sender address
                         to: email, // list of receivers
                         subject: "Account ID and Password",
                         html: `<p>Welcome to LMS, Congratulations,Your account has been created successfully.This is your User type : Student and Password :</p> <h1>${password}</h1>`
@@ -81,7 +81,7 @@ router.post("/register", async (req, res) => {
     }
 });
 
-//student login
+// student login
 router.post("/login", async (req, res) => {
     const { email, password } = req.body;
 
@@ -104,18 +104,18 @@ router.post("/login", async (req, res) => {
                         token,
                     });
                 } else {
-                    res.status(201).send({ message: "Wrong credentials" });
+                    res.status(201).send({ message: "Wrong Password" });
                 }
             });
         } else {
-            res.send({ message: "Wrong credentials" });
+            res.send({ message: "Wrong EmailID" });
         }
     } catch (error) {
         res.status(404).send({ message: "Error" });
     }
 });
 
-//edit student
+// edit student
 router.patch("/:studentId", isAuthenticated, async (req, res) => {
     const { studentId } = req.params;
     const payload = req.body.data;
@@ -133,7 +133,7 @@ router.patch("/:studentId", isAuthenticated, async (req, res) => {
     }
 });
 
-//delete student
+// delete student
 router.delete("/:studentId", async (req, res) => {
     const { studentId } = req.params;
     try {
