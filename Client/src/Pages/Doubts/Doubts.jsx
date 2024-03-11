@@ -58,6 +58,7 @@ const Doubts = () => {
   const [fileType, setFileType] = useState("");
   const [fileUrl, setFileUrl] = useState("");
   const [thumbnailUrl, setThumbnailUrl] = useState("");
+  const [filterDoubt, setFilterDoubt] = useState("");
 
   //upload refs
   const UploadRef = useRef();
@@ -129,8 +130,8 @@ const Doubts = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(getDoubtData());
-  }, []);
+    dispatch(getDoubtData(filterDoubt));
+  }, [filterDoubt]);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -143,6 +144,16 @@ const Doubts = () => {
       <div className="content">
         <Header Title={"Doubts"} Address={"Doubts"} />
 
+        {/* Filter by Class */}
+        <select style={{ width: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 'auto', marginTop: '20px', marginBottom: '10px' }} value={filterDoubt} onChange={(e) => setFilterDoubt(e.target.value)}>
+          <option value="">Filter by Class</option>
+          <option value={5}>5</option>
+          <option value={6}>6</option>
+          <option value={7}>7</option>
+          <option value={8}>8</option>
+          <option value={9}>9</option>
+          <option value={10}>10</option>
+        </select>
         <h3>Unsolved Doubts</h3>
         <div className="contentData">
           {doubt

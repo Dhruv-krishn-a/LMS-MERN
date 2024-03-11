@@ -12,8 +12,15 @@ const { isTutorAuthenticated } = require("../middlewares/authenticate");
 
 //get all tutor data
 router.get("/all", async (req, res) => {
+    const { filter } = req.query;
+
     try {
-        const tutors = await TutorModel.find();
+        let tutors;
+        if (filter) {
+            tutors = await TutorModel.find({ subject: filter });
+        } else {
+            tutors = await TutorModel.find();
+        }
         res.send({ message: "All tutor data", tutors });
     } catch (error) {
         res.status(400).send({ message: "Something went wrong" });

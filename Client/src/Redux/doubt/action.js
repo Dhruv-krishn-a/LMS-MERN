@@ -42,10 +42,10 @@ export const addResponse = (id, desc) => async (dispatch) => {
 };
 
 //get all doubts data
-export const getDoubtData = () => async (dispatch) => {
+export const getDoubtData = (filter) => async (dispatch) => {
   try {
     dispatch({ type: types.GET_DOUBT_REQUEST });
-    const res = await axios.get(`${url}/doubt/all`);
+    const res = await axios.get(`${url}/doubt/all?filter=${filter}`);
     dispatch({
       type: types.GET_DOUBT_SUCCESS,
       payload: { doubt: res.data.doubt },

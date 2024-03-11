@@ -9,8 +9,14 @@ const { isAuthenticated } = require("../middlewares/authenticate");
 
 //get all content data route
 router.get("/all", async (req, res) => {
+    const { filter } = req.query
     try {
-        const content = await ContentModel.find();
+        let content;
+        if (filter) {
+            content = await ContentModel.find({ class: +filter });
+        } else {
+            content = await ContentModel.find();
+        }
         res.send({ msg: "All contents data", content });
     } catch (error) {
         res.status(400).send({ msg: "Something went wrong" });

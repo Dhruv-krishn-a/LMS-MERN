@@ -61,6 +61,7 @@ const Quizzes = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [question, setQuestion] = useState(questionData);
   const [allQuestions, setAllQuestions] = useState([]);
+  const [filterQuiz, setFilterQuiz] = useState('');
 
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -159,8 +160,8 @@ const Quizzes = () => {
   };
 
   useEffect(() => {
-    dispatch(getQuizData());
-  }, []);
+    dispatch(getQuizData(filterQuiz));
+  }, [filterQuiz]);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -173,6 +174,17 @@ const Quizzes = () => {
       <div className="quizzes">
         {contextHolder}
         <Header Title={"Quizzes"} Address={"Quizzes"} />
+        
+        {/* Filter by Class */}
+        <select style={{ width: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 'auto', marginTop: '20px', marginBottom:'10px' }} value={filterQuiz} onChange={(e) => setFilterQuiz(e.target.value)}>
+          <option value="">Filter by Class</option>
+          <option value={5}>5</option>
+          <option value={6}>6</option>
+          <option value={7}>7</option>
+          <option value={8}>8</option>
+          <option value={9}>9</option>
+          <option value={10}>10</option>
+        </select>
         <div className="quizData">
           {quiz?.map((data, i) => {
             return <Quiz data={data} key={i} />;

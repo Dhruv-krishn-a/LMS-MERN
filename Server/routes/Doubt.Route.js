@@ -6,8 +6,14 @@ const { DoubtModel } = require("../models/doubt.model");
 
 //get all doubts data 
 router.get("/all", async (req, res) => {
+    const { filter } = req.query;
     try {
-        const doubt = await DoubtModel.find();
+        let doubt;
+        if (filter) {
+            doubt = await DoubtModel.find({ class: +filter });
+        } else {
+            doubt = await DoubtModel.find();
+        }
         res.send({ msg: "All doubts data", doubt });
     } catch (error) {
         res.status(400).send({ msg: "Something went wrong" });

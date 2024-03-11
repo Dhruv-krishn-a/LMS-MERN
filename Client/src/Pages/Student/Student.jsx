@@ -16,6 +16,7 @@ import "./Student.css";
 const Student = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [filterStudent, setFilterStudent] = useState('');
 
   //alert api
   const [messageApi, contextHolder] = message.useMessage();
@@ -99,8 +100,8 @@ const Student = () => {
   };
 
   useEffect(() => {
-    dispatch(getStudentData());
-  }, []);
+    dispatch(getStudentData(filterStudent));
+  }, [filterStudent]);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -112,6 +113,17 @@ const Student = () => {
     <Navbar>
       <div className="admin">
         <Header Title={"Student Data"} Address={"Student"} />
+
+        {/* Filter by Class */}
+        <select style={{ width: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 'auto', marginTop: '20px', marginBottom:'10px' }} value={filterStudent} onChange={(e) => setFilterStudent(e.target.value)}>
+          <option value="">Filter by Class</option>
+          <option value={5}>5</option>
+          <option value={6}>6</option>
+          <option value={7}>7</option>
+          <option value={8}>8</option>
+          <option value={9}>9</option>
+          <option value={10}>10</option>
+        </select>
         <div className="adminData">
           <section className="tableBody">
             <table>

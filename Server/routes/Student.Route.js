@@ -12,8 +12,15 @@ const { isAuthenticated } = require("../middlewares/authenticate");
 
 // gel all students data
 router.get("/all", async (req, res) => {
+    const { filter } = req.query;
+
     try {
-        const students = await StudentModel.find();
+        let students;
+        if (filter) {
+            students = await StudentModel.find({ class: +filter });
+        } else {
+            students = await StudentModel.find();
+        }
         res.send({ message: "All students data", students });
     } catch (error) {
         res.status(400).send({ message: "Something went wrong" });

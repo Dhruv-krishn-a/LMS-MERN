@@ -25,10 +25,10 @@ export const createQuiz = (data) => async (dispatch) => {
 };
 
 //get all quiz data
-export const getQuizData = () => async (dispatch) => {
+export const getQuizData = (filter) => async (dispatch) => {
   try {
     dispatch({ type: types.GET_QUIZ_REQUEST });
-    const res = await axios.get(`${url}/quiz/all`);
+    const res = await axios.get(`${url}/quiz/all?filter=${filter}`);
     dispatch({
       type: types.GET_QUIZ_SUCCESS,
       payload: { quiz: res.data.quizzes },

@@ -27,10 +27,10 @@ export const studentRegister = (data) => async (dispatch) => {
 };
 
 //get all students data
-export const getStudentData = () => async (dispatch) => {
+export const getStudentData = (filter) => async (dispatch) => {
   try {
     dispatch({ type: types.GET_STUDENT_REQUEST });
-    const res = await axios.get(`${url}/student/all`);
+    const res = await axios.get(`${url}/student/all?filter=${filter}`);
     dispatch({
       type: types.GET_STUDENT_SUCCESS,
       payload: { students: res.data.students },

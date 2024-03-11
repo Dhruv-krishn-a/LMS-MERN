@@ -12,8 +12,14 @@ const { isAdminAuthenticated } = require("../middlewares/authenticate");
 
 //get all admin data route
 router.get("/all", async (req, res) => {
+    const { filter } = req.query;
     try {
-        const admins = await AdminModel.find();
+        let admins;
+        if (filter) {
+            admins = await AdminModel.find({ name: { $regex: filter, $options: "six" } });
+        } else {
+            admins = await AdminModel.find();
+        }
         res.send({ message: "All admins data", admins });
     } catch (error) {
         res.status(400).send({ message: "Something went wrong" });

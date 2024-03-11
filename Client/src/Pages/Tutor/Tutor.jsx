@@ -16,6 +16,7 @@ import "./Tutor.css";
 const Tutor = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [filterTutor, setFilterTutor] = useState('');
 
   //redux states
   const {
@@ -98,8 +99,8 @@ const Tutor = () => {
   };
 
   useEffect(() => {
-    dispatch(getTutorData());
-  }, []);
+    dispatch(getTutorData(filterTutor));
+  }, [filterTutor]);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -111,6 +112,17 @@ const Tutor = () => {
     <Navbar>
       <div className="admin">
         <Header Title={"Tutor Data"} Address={"Tutor"} />
+
+        {/* Filter by Subject */}
+        <select style={{ width: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 'auto', marginTop: '20px', marginBottom: '10px' }} value={filterTutor} onChange={(e) => setFilterTutor(e.target.value)}>
+          <option value="">Filter by Subject</option>
+          <option value="Maths">Maths</option>
+          <option value="Physics">Physics</option>
+          <option value="Chemistry">Chemistry</option>
+          <option value="Biology">Biology</option>
+          <option value="Political science">Political science</option>
+          <option value="History">History</option>
+        </select>
         <div className="adminData">
           <section className="tableBody">
             <table>

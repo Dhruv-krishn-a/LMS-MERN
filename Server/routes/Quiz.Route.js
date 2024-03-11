@@ -9,8 +9,14 @@ const { isAuthenticated } = require("../middlewares/authenticate");
 
 //get all quiz data
 router.get("/all", async (req, res) => {
+    const { filter } = req.query;
     try {
-        const quizzes = await QuizModel.find();
+        let quizzes;
+        if (filter) {
+            quizzes = await QuizModel.find({ class: +filter });
+        } else {
+            quizzes = await QuizModel.find();
+        }
         res.send({ msg: "All quizzes data", quizzes });
     } catch (error) {
         res.status(400).send({ msg: "Something went wrong" });

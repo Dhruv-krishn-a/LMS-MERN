@@ -28,6 +28,7 @@ const initialFormData = {
 const Admin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [filterAdmin, setFilterAdmin] = useState('');
 
   //loading state
   const [loading, setLoading] = useState(false);
@@ -98,8 +99,8 @@ const Admin = () => {
   };
 
   useEffect(() => {
-    dispatch(getAdminData());
-  }, []);
+    dispatch(getAdminData(filterAdmin));
+  }, [filterAdmin]);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -112,6 +113,9 @@ const Admin = () => {
       <div className="admin">
         {/* header component  */}
         <Header Title={"Admin Data"} Address={"Admin"} />
+
+        {/* Filter by Admin Username */}
+        <input style={{ width: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 'auto', marginTop: '20px', marginBottom:'10px' }} type="text" value={filterAdmin} placeholder="Search by username" name="name" onChange={(e) => setFilterAdmin(e.target.value)} />
 
         {/* table component  */}
         <div className="adminData">

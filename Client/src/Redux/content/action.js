@@ -24,10 +24,10 @@ export const createContent = (data) => async (dispatch) => {
 };
 
 //get all content data
-export const getContentData = () => async (dispatch) => {
+export const getContentData = (filter) => async (dispatch) => {
   try {
     dispatch({ type: types.GET_CONTENT_REQUEST });
-    const res = await axios.get(`${url}/content/all`);
+    const res = await axios.get(`${url}/content/all?filter=${filter}`);
     dispatch({
       type: types.GET_CONTENT_SUCCESS,
       payload: { content: res.data.content },

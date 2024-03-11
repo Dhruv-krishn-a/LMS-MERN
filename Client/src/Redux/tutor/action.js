@@ -27,10 +27,10 @@ export const tutorRegister = (data) => async (dispatch) => {
 };
 
 //get all tutors data
-export const getTutorData = () => async (dispatch) => {
+export const getTutorData = (filter) => async (dispatch) => {
   try {
     dispatch({ type: types.GET_TUTOR_REQUEST });
-    const res = await axios.get(`${url}/tutor/all`);
+    const res = await axios.get(`${url}/tutor/all?filter=${filter}`);
     dispatch({
       type: types.GET_TUTOR_SUCCESS,
       payload: { tutors: res.data.tutors },

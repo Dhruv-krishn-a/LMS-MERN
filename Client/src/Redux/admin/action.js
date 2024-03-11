@@ -27,12 +27,10 @@ export const adminRegister = (data) => async (dispatch) => {
 };
 
 //get all admins data
-export const getAdminData = (token) => async (dispatch) => {
+export const getAdminData = (filter) => async (dispatch) => {
   try {
     dispatch({ type: types.GET_ADMIN_REQUEST });
-    const res = await axios.get(`${url}/admin/all`, {
-      headers: { token: token },
-    });
+    const res = await axios.get(`${url}/admin/all?filter=${filter}`);
     dispatch({
       type: types.GET_ADMIN_SUCCESS,
       payload: { admins: res.data.admins },
