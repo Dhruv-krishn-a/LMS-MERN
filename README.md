@@ -68,8 +68,8 @@ ADMIN_PASSWORD = your password
 
 ## 🔗 Credentials for Admin
 
-- Email: pushpendra1697@gmail.com
-- Password: Push1697@
+- Email - pushpendra1697@gmail.com
+- Password - Push1697@
   
 ## 🔗 Credentials for Tutor and Student
 
