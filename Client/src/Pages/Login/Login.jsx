@@ -11,6 +11,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const auth = useSelector((store) => store.auth);
+  const emailError = document.getElementById('emailError');
 
   //alert api
   const [messageApi, contextHolder] = message.useMessage();
@@ -29,15 +30,31 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  function isValidEmail(email) {
+    // Regular expression for validating email addresses
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
   // login function
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    let isValid = true;
+    emailError.textContent = '';
     if (formData.type === "") {
       return messageApi.open({
         type: "error",
         content: "Please select user type.",
         duration: 3,
       });
+    }
+    // Email validation
+    if (!isValidEmail(formData.email)) {
+      isValid = false;
+      emailError.textContent = 'Invalid email format.';
+    }
+    if (!isValid) {
+      return;
     }
     setLoading(true);
     if (formData.type === "admin") {
@@ -177,6 +194,7 @@ const Login = () => {
                 type="email"
                 placeholder="Enter email"
               />
+              <span id="emailError" style={{ color: 'red' }}></span>
               <input
                 required
                 name="password"
