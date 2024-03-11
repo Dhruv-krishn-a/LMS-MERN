@@ -90,6 +90,7 @@ ADMIN_PASSWORD = your password
 - Leaderboard showing top students with the maximum gaming points
 - LMS can interact with email
 - All Filter is working to make user-friendly UI
+- Form validation
 
 ## Features yet to be made
 
