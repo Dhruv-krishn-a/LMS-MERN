@@ -83,7 +83,7 @@ ADMIN_PASSWORD = your password
 - Admin can access to manage all courses
 - Leaderboard showing top students with the maximum gaming points
 - LMS can interact with email
-- All Filter are working for making user friendly UI
+- All Filter are working to make user-friendly UI
 
 ## Features yet to be made
 
