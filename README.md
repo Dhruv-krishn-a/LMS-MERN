@@ -71,6 +71,11 @@ ADMIN_PASSWORD = your password
 - Email - test@gmail.com
 - Password - test
 
+## Credentials for Admin
+
+- Email: pushpendra1697@gmail.com
+- Password: Push1697@
+
 ## Features Completed
 
 - Admin can regulate user access to particular data
