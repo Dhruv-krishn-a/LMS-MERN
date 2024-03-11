@@ -66,15 +66,15 @@ ADMIN_PASSWORD = your password
 - Live - https://lms-dir.vercel.app/
 - Server - https://lms-server-xzsw.onrender.com
 
-## 🔗 Credentials
-
-- Email - test@gmail.com
-- Password - test
-
-## Credentials for Admin
+## 🔗 Credentials for Admin
 
 - Email: pushpendra1697@gmail.com
 - Password: Push1697@
+  
+## 🔗 Credentials for Tutor and Student
+
+- Email - test@gmail.com
+- Password - test
 
 ## Features Completed
 
@@ -88,7 +88,7 @@ ADMIN_PASSWORD = your password
 - Admin can access to manage all courses
 - Leaderboard showing top students with the maximum gaming points
 - LMS can interact with email
-- All Filter are working to make user-friendly UI
+- All Filter is working to make user-friendly UI
 
 ## Features yet to be made
 
