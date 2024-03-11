@@ -84,8 +84,8 @@ ADMIN_PASSWORD = your password
 - Students can monitor their performance and assess their progress using an LMS.
 - Students can raise doubts
 - Tutors can add responses to doubts
-- Tutors can only administer their own courses (Quizzes, Contents)
-- Admin can access to manage all courses (Quizzes, Contents)
+- Tutors can only administer (delete/edit) their own courses (Quizzes, Contents)
+- Admin can access to manage (delete/edit) all courses (Quizzes, Contents)
 - Leaderboard showing top students with the maximum gaming points
 - LMS can interact with email
 - All Filter is working to make user-friendly UI
