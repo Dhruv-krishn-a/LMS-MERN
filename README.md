@@ -107,11 +107,13 @@ ADMIN_PASSWORD = your password
 
 4. Quiz page
 
-![Screenshot (548)](https://github.com/Pushpendra-1697/Learning-Directory/assets/104748364/609453c6-132b-4f67-aabf-8f1cadc26333)
+![Screenshot (557)](https://github.com/Pushpendra-1697/Learning-Directory/assets/104748364/fed32e97-9be9-4ef3-80a6-7e3007fffa58)
+
 
 5. Leaderboard
 
-![Screenshot (549)](https://github.com/Pushpendra-1697/Learning-Directory/assets/104748364/c531ab28-0298-4680-94c1-588a633f5d21)
+![Screenshot (558)](https://github.com/Pushpendra-1697/Learning-Directory/assets/104748364/2f837176-e45a-42de-b69f-b34daf8618ba)
+
 
 6. Doubt page
 
@@ -122,6 +124,10 @@ ADMIN_PASSWORD = your password
 ![Screenshot (545)](https://github.com/Pushpendra-1697/Learning-Directory/assets/104748364/a5167bdf-2d77-4c11-9288-9c2fdc7fae1c)
 ![Screenshot (546)](https://github.com/Pushpendra-1697/Learning-Directory/assets/104748364/11d4d117-70de-438f-a365-3d80b1a6e230)
 
+### Filter viewport
+![Screenshot (554)](https://github.com/Pushpendra-1697/Learning-Directory/assets/104748364/0c78a953-1f5e-4c7d-96e9-92f456c989e6)
+![Screenshot (555)](https://github.com/Pushpendra-1697/Learning-Directory/assets/104748364/8ffadf8b-1495-4d3a-9cee-700d87f5e7fd)
+![Screenshot (556)](https://github.com/Pushpendra-1697/Learning-Directory/assets/104748364/5a69c5b5-7d6a-4e2e-90be-83eae5635b98)
 
 ##  Contributor
 
